@@ -42,11 +42,21 @@ fcomp() {
 cpu_load_status() {
   local percentage=$1
   if fcomp 80 $percentage; then
-    echo "high"
-  elif fcomp 30 $percentage && fcomp $percentage 80; then
-    echo "medium"
+    echo "tier8"
+  elif fcomp 55 $percentage && fcomp $percentage 80; then
+    echo "tier7"
+  elif fcomp 40 $percentage && fcomp $percentage 55; then
+    echo "tier6"
+  elif fcomp 25 $percentage && fcomp $percentage 40; then
+    echo "tier5"
+  elif fcomp 20 $percentage && fcomp $percentage 25; then
+    echo "tier4"
+  elif fcomp 15 $percentage && fcomp $percentage 20; then
+    echo "tier3"
+  elif fcomp 8 $percentage && fcomp $percentage 15; then
+    echo "tier2"
   else
-    echo "low"
+    echo "tier1"
   fi
 }
 
